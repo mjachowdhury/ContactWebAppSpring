@@ -7,7 +7,9 @@
     <!-- user is not yet logged in : Guest Menu-->
     
     <s:url var="url_reg_form" value="/reg_form"/>
-    <a href="#">Home</a> | <a href="#">Login</a> | <a href="${url_reg_form}">Register</a> | <a href="#">About</a> |<a href="#">Help</a>
+     <s:url var="url_index" value="/index"/>
+     
+    <a href="${url_index}">Home</a> | <a href="${url_index}">Login</a> | <a href="${url_reg_form}">Register</a> | <a href="#">About</a> |<a href="#">Help</a>
 </c:if>
     
 <c:if test="${sessionScope.userId!=null && sessionScope.role == 1}"> <!--this is the admin menu-->

@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private UserService userService;
   
-    @RequestMapping(value = {"/","/index"})//this si how to do multiple url and default page
+    @RequestMapping(value = {"/","/index"})//this is how to do multiple url and default page
     public String index(Model m){
         m.addAttribute("command", new LoginCommand());
         return "index"; //JSP-/WEB-INF/view/index.jsp
@@ -156,5 +156,16 @@ public class UserController {
             e.printStackTrace();
             return "ERROR: Unable to Change Status";
         }
+    }
+    
+    
+    @RequestMapping(value = "/check_avail")//this are mapping
+    @ResponseBody
+    public String checkAvailability(@RequestParam String username){
+          if(userService.isUsernameExist(username)){
+              return "The username is already taken. Choose another name";
+          }else{
+              return "Yes! You can take this username";
+          }
     }
 }

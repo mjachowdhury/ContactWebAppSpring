@@ -15,6 +15,25 @@
         <title>User Registration - Contact Application</title>
         <s:url var="url_css" value="/static/css/style.css"/>
         <link href="${url_css}" rel="stylesheet" type="text/css"/>
+        
+        <s:url var="url_jqlib" value="/static/js/jquery-3.2.1.min.js"></s:url>
+        <script src="${url_jqlib}"></script>
+        
+        <script>
+            $(document).ready(function (){
+                $("#id_check_avail").click(function (){
+                    $.ajax({
+                        url:'check_avail',
+                        data: {username: $("#id_username").val()},
+                        success : function(data){
+                            $("#id_res_div").html(data);                          
+                        }
+                    });
+                });
+            });
+            
+        </script>
+        
     </head>
     <s:url var="url_bg" value="/static/images/background_image.jpg"/>
     
@@ -64,7 +83,10 @@
                               
                               <tr>
                                   <td>Username</td>
-                                  <td><f:input path="user.loginName" /> </td>                                 
+                                  <td><f:input id="id_username" path="user.loginName" /> 
+                                      <button type="button" id="id_check_avail">Check Availability</button>
+                                      <div id="id_res_div" class="error"></div>
+                                  </td>                                 
                               </tr>
                              
                               <tr>

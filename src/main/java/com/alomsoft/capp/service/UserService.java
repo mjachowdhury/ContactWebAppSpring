@@ -47,4 +47,12 @@ public interface UserService {
      * @param loginStatus 
      */
     public void changeLoginStatus(Integer userId, Integer loginStatus);
+    
+    /**
+     * Check the username availability
+     * @param username
+     * @return 
+     */
+    public Boolean isUsernameExist(String username);
+        
 }
