@@ -1,6 +1,7 @@
 # ContactWebAppSpring
+
 Technology Used
-=================
+
 Java SE
 Java EE - JSP,Servlet
 Spring Web MVC
@@ -12,7 +13,7 @@ Apache Maven
 
  
 Guidline to be taken
-====================
+
 Modulr Development - whole application
 	- web layer(MVC)
 	- Business Layer(Servoice, DAO for database)
