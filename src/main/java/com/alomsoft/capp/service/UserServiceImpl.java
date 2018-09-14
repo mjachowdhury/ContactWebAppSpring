@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+//Role 1 represent admin and 2 represen user 
 /**
  *
  * @author Mohammed
@@ -60,10 +61,18 @@ public class UserServiceImpl extends BaseDAO implements UserService{
         return userDAO.findByProperty("role", UserService.ROLE_USER);
         
     }
-
+/**
+ * This method will change the status of the user in the server and database
+ * @param userId
+ * @param loginStatus 
+ */
     @Override
     public void changeLoginStatus(Integer userId, Integer loginStatus) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         String sql = "UPDATE user SET loginStatus=:lst WHERE userID=:uid";
+         Map m = new HashMap();
+         m.put("uid", userId);
+         m.put("lst", loginStatus);
+         getNamedParameterJdbcTemplate().update(sql, m);
     }
     
 }

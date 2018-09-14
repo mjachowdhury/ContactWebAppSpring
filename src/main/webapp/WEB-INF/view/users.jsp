@@ -14,6 +14,24 @@
         <title>User List - Contact Application</title>
         <s:url var="url_css" value="/static/css/style.css"/>
         <link href="${url_css}" rel="stylesheet" type="text/css"/>
+        
+        <s:url var="url_jqlib" value="/static/js/jquery-3.2.1.min.js"></s:url>
+        <script src="${url_jqlib}"></script>
+        
+        <!--here i am calling the changeStatus function -->
+        <script>
+            function changeStatus(uId, lStatus){
+                //alert(userId+ "," + loginStatus)
+                $.ajax({
+                    url:'change_status',
+                    data:{userId:uId, loginStatus:lStatus},
+                    success: function (data){
+                        alert(data);
+                    }
+                });
+            }
+        </script>
+        
     </head>
     <s:url var="url_bg" value="/static/images/background_image.jpg"/>
     
@@ -39,6 +57,7 @@
                       <h3>User List</h3>
                       <table border="1">
                           <tr>
+                              <!--th is table header-->
                               <th>SR.NO</th>
                               <th>USER ID</th>
                               <th>NAME</th>
@@ -48,6 +67,7 @@
                               <th>USERNAME</th>
                               <th>STATUS</th>
                           </tr>
+                          <!--tag library-->
                           <c:forEach var="u" items="${userList}" varStatus="st">
                               <tr>
                               <td>${st.count}</td>
@@ -57,7 +77,19 @@
                               <td>${u.email}</td>
                               <td>${u.address}</td>
                               <td>${u.loginName}</td>
-                              <td>${u.loginStatus}</td>
+                              <td>
+                                  <!--to get a combo box for active or block-->
+                                  <select id="id_${u.userId}" onchange="changeStatus(${u.userId},$(this).val())">
+                                      <option value="1">Active</option>
+                                      <option value="2">Block</option>
+                                  </select>
+                                      <!--this part will executed in the server-->
+                                      <script>
+                                          $('#id_${u.userId}').val(${u.loginStatus});
+                                      </script>
+                                      <!--with this line i can see the status as well for understanding for internal process-->
+                                     <!-- ${u.loginStatus}-->
+                              </td>
                           </tr>
                               
                           </c:forEach>
