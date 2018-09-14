@@ -12,21 +12,12 @@ AJAX, jQuery
 Apache Maven
 
  
-Guidline to be taken
-
-Modulr Development - whole application
-	- web layer(MVC)
-	- Business Layer(Servoice, DAO for database)
-
--Reusability
--Loose Coupling - SpingFrame work fully based on loose couppling
--Extensibility
--Customizable
--Documentation Soource code
+This project covered many concepts like DAO, Services, Business Logic, Controller, Loose Coupling, Modular Development, Unit Testing, Modular View, User Login-Logout, Session Handing, CRUD Operation, Connection Pool(DataSource), JSTL taglib, JSP View, Message error/success and many more.
 
 
 *Knowledge required - JSP, Servlet(Basic)
 *HTML, CSS, JS (Basic)
 *Core Java SE
 *JDBC API
+
 
